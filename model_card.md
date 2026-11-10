@@ -150,6 +150,6 @@ The Iris dataset was collected in 1936 from a single geographical location. It d
 
 ## Reproducibility
 
-- **Git commit (git_sha)** : `<your_sha>`
+- **Git commit (git_sha)** : bf3c8d9b3a58e7aee41393464d78a1ce20552adf
 - **MLflow run_id** : N/A (not used in this chapter)
 - **Dataset hash** : N/A (not used in this chapter)
