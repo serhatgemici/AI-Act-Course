@@ -33,6 +33,7 @@ By completing this exercise, you will learn how to:
 chapitre-2/
 ├── train.py
 ├── model_card.md
+├── publish_card.py
 ├── pyproject.toml
 └── .env.example
 ```
@@ -41,6 +42,7 @@ chapitre-2/
 |--------|-------------|
 | `train.py` | Training script (provided, do not modify) |
 | `model_card.md` | Model Card template to complete |
+| `publish_card.py` | Publishes the Model Card to Hugging Face |
 | `pyproject.toml` | Project dependencies |
 | `.env.example` | Hugging Face token template |
 
@@ -134,17 +136,16 @@ Create a `.env` file:
 cp .env.example .env
 ```
 
-Add your Hugging Face token:
+Add your Hugging Face token and username:
 
 ```env
 HF_TOKEN="hf_xxxxxxxxxxxxxxxxx"
+USERNAME="your-hugging-face-username"
 ```
 
-Create a publication script:
-
-```bash
-publish_card.py
-```
+The script loads `.env` automatically. Environment variables already set in
+your shell take precedence over values in the file. Keep your token private;
+`.env` is ignored by Git.
 
 Run:
 
@@ -175,7 +176,7 @@ Must contain:
 Must contain:
 
 - Published Model Card
-- Private repository named `ch02-iris`
+- Private repository named `exo-chap2`
 
 ---
 

@@ -1,37 +1,31 @@
-from huggingface_hub import HfApi, ModelCard
+"""Publish the project's model card to a private Hugging Face repository."""
+
 import os
+from pathlib import Path
 
-"""""
-Hugging Face Model Card Publisher
+from dotenv import load_dotenv
+from huggingface_hub import HfApi, ModelCard
 
-This script automates the creation and publishing of a Hugging Face Model Card for the specified project.
-
-It expects the environment variables HF_TOKEN and USERNAME to be set.
-
-Usage:
-    python publish_card.py
-
-Ensure that the environment variables HF_TOKEN and USERNAME are set before running the script.
-""" ""
+load_dotenv(Path(__file__).with_name(".env"))
 
 PROJECT_NAME = "exo-chap2"
+username = os.getenv("USERNAME", "").strip()
+token = os.getenv("HF_TOKEN", "").strip()
 
-REPO_ID = os.getenv("USERNAME") + "/" + PROJECT_NAME
+missing = [
+    name for name, value in (("USERNAME", username), ("HF_TOKEN", token)) if not value
+]
+if missing:
+    raise SystemExit(
+        f"Missing required configuration: {', '.join(missing)}. Set it in .env or the environment."
+    )
 
-token = os.getenv("HF_TOKEN")
 
-if token is None:
-    raise ValueError("Missing HF_TOKEN")
-
+repo_id = f"{username}/{PROJECT_NAME}"
 api = HfApi(token=token)
+api.create_repo(repo_id=repo_id, repo_type="model", private=True, exist_ok=True)
 
-# Creation of the private repo
-api.create_repo(repo_id=REPO_ID, repo_type="model", private=True, exist_ok=True)
-
-# Loading the Model Card
 card = ModelCard.load("model_card.md")
-
-# Push to the Hub
-card.push_to_hub(REPO_ID, token=token)
+card.push_to_hub(repo_id, token=token)
 
 print("Model Card published successfully.")
