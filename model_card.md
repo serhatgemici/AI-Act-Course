@@ -36,7 +36,7 @@ This model predicts the species of an Iris flower (setosa, versicolor, or virgin
 
 **Usage Context**: learning environment only. This model can be used for technical demonstrations, supervised classification exercises, or ML pipeline testing.
 
-### Uso fuera de alcance
+### Use Beyond the Scope
 
 - **Not suitable for production use**: this model has not undergone robustness testing, cross-validation, or regulatory audit.
 - **Not designed for high-stakes decisions**: any use in a medical, legal, or commercial context is out of scope.
