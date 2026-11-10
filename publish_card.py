@@ -9,7 +9,7 @@ This script automates the creation and publishing of a Hugging Face Model Card f
 It expects the environment variables HF_TOKEN and USERNAME to be set.
 
 Usage:
-    python hf_publisher.py
+    python publish_card.py
 
 Ensure that the environment variables HF_TOKEN and USERNAME are set before running the script.
 """ ""
